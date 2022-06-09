@@ -1,0 +1,64 @@
+﻿@model IEnumerable<u21686875_HW03.Models.ModelFile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .contain {
+        background-color: rgb(221 221 221);
+        padding: 30px 30px 30px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<h2>Index</h2>
+
+<h2>Images of any file type</h2>
+<h4>............"Media/Videos/" folder</h4>
+
+<div class="contain">
+    <div class="container-fluid contain">
+        <div class="row">
+            <div class="card">
+                @foreach (var videos in Model)
+                {
+                <div class="col-lg-6">
+                    <a data-fancybox="gallery" href="~/Media/Videos/@videos.FileName">
+                        <video width="320" height="240" controls>
+                            <source src="~/Media/Videos/@videos.FileName" type="video/mp4">
+                        </video>
+                    </a>
+                        
+                        <p>@videos.FileName</p>
+                        <td>
+                            <button type="button" class="btn btn-success">@Html.ActionLink("Download", "DownloadFile", new { fileName = videos.FileName })</button>
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "DeleteFile", new { fileName = videos.FileName }, new { onclick = "return confirm('Are you sure');" })</button>
+                        </td>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+
+        $(".zoom").hover(function () {
+
+            $(this).addClass('transition');
+        }, function () {
+
+            $(this).removeClass('transition');
+        });
+    });
+</script>

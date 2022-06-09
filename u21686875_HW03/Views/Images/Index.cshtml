@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using u21686875_HW03.Models
+@model List<ModelFile>
+
+<style>
+    .contain {
+        background-color: rgb(221 221 221);
+        padding: 30px 30px 30px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<h2>Images of any file type</h2>
+<h4>............"Media/Images/" folder</h4>
+
+<div class="contain">
+    <div class="card-deck">
+        @foreach (var images in Model)
+        {
+            <div class="card">
+                <a href="~/Media/Images/@images.FileName" data-fancybox="gallery">
+
+                    <img src="~/Media/Images/@images.FileName" />
+                    <p>@images.FileName</p>
+                    <td>
+                        <button type="button" class="btn btn-success">@Html.ActionLink("Download", "DownloadFile", new { fileName = images.FileName })</button>
+                    </td>
+
+                    <td>
+                        <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "DeleteFile", new { fileName = images.FileName }, new { onclick = "return confirm('Are you sure');" })</button>
+                    </td>
+
+                </a>
+            </div>
+
+        }
+    </div>
+</div>
+
+

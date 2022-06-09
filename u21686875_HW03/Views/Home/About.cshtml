@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+@using u21686875_HW03.Models
+@model List<ModelFile>
+<style>
+    .row {
+        background-color: rgb(221 221 221);
+    }
+
+    .col-sm-4 {
+        padding-left: 12px;
+    }
+</style>
+
+<h2>Thabang Kgaladi</h2>
+<h4>The Life of a University Student</h4>
+
+<form action="" method="post">
+    <div class="container">
+        <div class="row">
+            <h2>Bio</h2>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-5">
+                <p>The names Thabang Kgaladi, but I'd like to be refered to as Cruzer. '</p>
+                <p>I enjoy completing mind boggling tasks or discorvering new things about me, the world and others. This also includes the playing games, creating digital art</p>
+                <p>I find watching anime a new source/or drug if you will of television</p>
+                <p>I am currently a student at the University of Pretoria studying Information and Knowledge System, in the Software Development stream</p>
+                <br />
+                <p>Pleased to make you aquintance</p>
+            </div>
+            <div class="col-sm-4">
+                <h2>Thabang Kgaladi</h2>
+                @foreach (var images in ViewBag.images)
+                {
+                     <img src="~/Profile/@Path.GetFileName(images)" width="200" height="300"/>
+                }
+            </div>
+        </div>
+    </div>
+</form>

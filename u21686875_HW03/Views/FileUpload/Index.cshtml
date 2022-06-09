@@ -1,0 +1,57 @@
+﻿@model IEnumerable<u21686875_HW03.Models.ModelFile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .row {
+        background-color: rgb(221 221 221);
+    }
+
+    .col-sm-4 {
+        padding-left: 12px;
+    }
+</style>
+
+<h2>myMedia</h2>
+<h4>Welcome to My Space</h4>
+
+<div>
+    <div class="row">
+        <h2>Description</h2>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm("Index", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+        // an encoding type that allows files to be sent through a POST.
+        // Quite simply, without this encoding the files cannot be sent through POST.
+        {
+        <div class="col-sm-7">
+            <p>This is a MVC-based project that is coded to upload and download various files</p>
+            <p>The following are the kind of files that can be uploaded</p>
+            <p>1. Images</p>
+            <p>2. Documents</p>
+            <p>3. Videos</p>
+            <p>All of these are downloadable as well as deletable</p>
+        </div>
+            <div class="col-sm-3">
+                <h2>Option Selection</h2>
+                <label>Document</label><input type="radio" value="Document" name="selectedBtn" />
+                <br />
+                <label>Image</label><input type="radio" value="Image" name="selectedBtn" />
+                <br />
+                <label>Video</label><input type="radio" value="Video" name="selectedBtn" />
+                <br />
+                <input type="file" name="files" />
+                <br />
+                <div><input type="submit" value="Upload" /></div>
+            </div>
+           
+        }
+    </div>
+    <br />
+</div>
+<footer>
+        <li>@Html.ActionLink("Files Download", "Index", "FileDownload")</li>
+    </footer>
